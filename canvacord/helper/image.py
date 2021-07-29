@@ -40,16 +40,13 @@ class ImageHelper:
         :type fonts_cache_dict: Optional[FontCacheDict]
         """
         # User can pass custom ImageClass object
-        self.images_cache = (
-            images_cache
-            if images_cache
-            else ImageCache(image_asset_directory, images_cache_dict)
+        self.images_cache = images_cache or ImageCache(
+            image_asset_directory, images_cache_dict
         )
 
-        self.fonts_cache = (
-            fonts_cache
-            if fonts_cache
-            else FontCache(font_asset_directory, fonts_cache_dict)
+
+        self.fonts_cache = fonts_cache or FontCache(
+            font_asset_directory, fonts_cache_dict
         )
 
     @classmethod
