@@ -89,10 +89,8 @@ class FontCache:
 
         for item in os.listdir(directory):
             if item.endswith(".ttf"):
-                f = open(directory / item, "rb")
-                filelike[item] = io.BytesIO(f.read())
-                f.close()
-
+                with open(directory / item, "rb") as f:
+                    filelike[item] = io.BytesIO(f.read())
         self.filelike = self.filelike | filelike
 
         return self.filelike
